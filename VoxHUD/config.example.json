@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "provider_mode": "demo",
+  "dashscope": {
+    "api_key": "",
+    "region": "cn",
+    "asr_url": "wss://dashscope.aliyuncs.com/api-ws/v1/realtime?model=qwen3-asr-flash-realtime",
+    "asr_model": "qwen3-asr-flash-realtime",
+    "tts_url": "wss://dashscope.aliyuncs.com/api-ws/v1/realtime?model=qwen3-tts-flash-realtime",
+    "tts_model": "qwen3-tts-flash-realtime",
+    "tts_voice": "Cherry",
+    "tts_language_type": "Chinese",
+    "language": "zh",
+    "asr_silence_ms": 420,
+    "asr_threshold": 0.25
+  },
+  "llm": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key": "",
+    "model": "qwen-plus",
+    "system_prompt": "你是 VoxHUD，一个运行在用户 Windows 桌面上的全双工语音助手。回答要自然、简洁、口语化，通常控制在 1 到 4 句话。除非用户明确要求，不要使用 Markdown、列表或代码块，因为你的回答会被朗读出来。如果用户打断你，先听清用户的新问题再回答。",
+    "temperature": 0.6,
+    "max_tokens": 512,
+    "history_turns": 8,
+    "timeout_s": 60.0
+  },
+  "turn": {
+    "eot_hold_ms": 320,
+    "eot_terminal_hold_ms": 140,
+    "eot_asr_timeout_ms": 1100,
+    "eot_max_utterance_ms": 15000,
+    "eot_empty_reset_ms": 2200,
+    "barge_in_enabled": true,
+    "barge_in_guard_ms": 320,
+    "barge_in_min_speech_ms": 140,
+    "barge_in_cooldown_ms": 700,
+    "barge_in_sensitivity": 0.55,
+    "allow_thinking_interrupt": true,
+    "barge_in_on_asr": false,
+    "asr_barge_in_min_ms": 500,
+    "min_utterance_chars": 1
+  },
+  "audio": {
+    "input_device": null,
+    "output_device": null,
+    "sample_rate": 16000,
+    "block_ms": 20,
+    "aec": true,
+    "noise_suppression": true,
+    "agc": false,
+    "aec_delay_ms": 120,
+    "latency": "low",
+    "mic_gain": 1.0,
+    "output_volume": 0.85,
+    "vad_mode": 2
+  },
+  "ui": {
+    "hotkey": "ctrl+alt+space",
+    "interrupt_hotkey": "ctrl+alt+x",
+    "always_on_top": true,
+    "opacity": 0.97,
+    "accent": "#7C5CFF",
+    "show_transcript": true,
+    "show_debug": false,
+    "close_to_tray": true,
+    "start_hidden": false,
+    "window_x": null,
+    "window_y": null,
+    "states": {
+      "idle": {
+        "label": "待命",
+        "hint": "按 Ctrl+Alt+Space 呼出 · 直接说话",
+        "color": "#8B8FA3",
+        "animation": "breathe"
+      },
+      "listening": {
+        "label": "正在聆听",
+        "hint": "说完停顿一下，我会接话；随时可以打断我",
+        "color": "#4FD1C5",
+        "animation": "wave"
+      },
+      "thinking": {
+        "label": "思考中",
+        "hint": "正在组织回答…",
+        "color": "#F6AD55",
+        "animation": "orbit"
+      },
+      "speaking": {
+        "label": "正在回答",
+        "hint": "直接说话即可打断我",
+        "color": "#8B7CFF",
+        "animation": "wave"
+      },
+      "interrupted": {
+        "label": "已打断",
+        "hint": "我在听，请继续",
+        "color": "#FC8181",
+        "animation": "flash"
+      },
+      "error": {
+        "label": "出错了",
+        "hint": "检查设置或网络后重试",
+        "color": "#F56565",
+        "animation": "flat"
+      }
+    }
+  },
+  "demo": {
+    "turns": [
+      "你好，请介绍一下你自己。",
+      "今天天气怎么样？",
+      "给我讲一个简短的笑话。",
+      "你能帮我做什么？"
+    ],
+    "response_delay_ms": 18,
+    "tone_volume": 0.12
+  }
+}
